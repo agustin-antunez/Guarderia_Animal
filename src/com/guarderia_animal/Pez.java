@@ -2,15 +2,16 @@ package com.guarderia_animal;
 
 public class Pez extends Animal{
 
-    //ATRIBUTO
-
+    //ATRIBUTOS
     private String tipoAgua;
 
-    public Pez(String tipo, String nombre, int edad, String sexo, double peso, String tipoAgua, String nombreDueño, long dniDueño, String direccionDueño) {
-        super(tipo, nombre, edad, sexo, peso, nombreDueño, dniDueño, direccionDueño);
+    //CONSTRUCTOR
+    public Pez(String tipo, String nombre, int edad, String sexo, double peso, String tipoAgua, String nombreDuenio, long dniDuenio, String direccionDuenio) {
+        super(tipo, nombre, edad, sexo, peso, nombreDuenio, dniDuenio, direccionDuenio);
         this.tipoAgua = tipoAgua;
     }
 
+    //METODOS
     @Override
     public void saludar() {
         System.out.println(" Hola soy " + getNombre() + " y estoy saludando, digo:  glup glup");
@@ -36,9 +37,9 @@ public class Pez extends Animal{
                 ", sexo='" + sexo + '\'' +
                 ", peso=" + peso +
                 ", tipoAgua='" + tipoAgua + '\'' +
-                ", nombreDueño='" + nombreDueño + '\'' +
-                ", dniDueño=" + dniDueño +
-                ", direccionDueño='" + direccionDueño + '\'' +
+                ", nombreDueño='" + nombreDuenio + '\'' +
+                ", dniDueño=" + dniDuenio +
+                ", direccionDueño='" + direccionDuenio + '\'' +
                 '}';
     }
 }

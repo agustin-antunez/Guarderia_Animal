@@ -6,11 +6,13 @@ public class Perro extends Animal{
 
     private String raza;
 
-    public Perro(String tipo, String nombre, int edad, String sexo, double peso, String raza, String nombreDueño, long dniDueño, String direccionDueño) {
-        super(tipo, nombre, edad, sexo, peso, nombreDueño, dniDueño, direccionDueño);
+    //CONSTRUCTOR
+    public Perro(String tipo, String nombre, int edad, String sexo, double peso, String raza, String nombreDuenio, long dniDuenio, String direccionDuenio) {
+        super(tipo, nombre, edad, sexo, peso, nombreDuenio, dniDuenio, direccionDuenio);
         this.raza = raza;
     }
 
+    //METODOS
     @Override
     public void saludar() {
         System.out.println(" Hola soy " + getNombre() + " y estoy saludando, digo... guau guau");
@@ -36,9 +38,9 @@ public class Perro extends Animal{
                 ", sexo='" + sexo + '\'' +
                 ", peso=" + peso +
                 ", raza='" + raza + '\'' +
-                ", nombreDueño='" + nombreDueño + '\'' +
-                ", dniDueño=" + dniDueño +
-                ", direccionDueño='" + direccionDueño + '\'' +
+                ", nombreDueño='" + nombreDuenio + '\'' +
+                ", dniDueño=" + dniDuenio +
+                ", direccionDueño='" + direccionDuenio + '\'' +
                 '}';
     }
 }

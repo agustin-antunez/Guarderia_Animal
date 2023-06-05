@@ -1,12 +1,11 @@
 package com.guarderia_animal;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Guarderia {
 
-    private static ArrayList<Animal> animales = new ArrayList<>();
+    //ARRAYLIST
+    private static final ArrayList<Animal> animales = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -14,16 +13,8 @@ public class Guarderia {
         int opcion;
 
         do {
-            System.out.println("Hola bienvenido al sistema de datos de la Guarderia SunnySide :)");
-            System.out.println("A continuacion ingrese la opcion correspondiente a sus necesidades: ");
-            System.out.println("1. Ingresar a un animal a la guarderia.");
-            System.out.println("2. Retirar animal de la guarderia");
-            System.out.println("3. Calcular cantidad de animales que se encuentran en la guarderia");
-            System.out.println("4. Listar todos los animales con sus datos");
-            System.out.println("5. Hacer saludar a todos los animales de la guarderia");
-            System.out.println("0. Salir del sistema");
-            System.out.println(" ");
 
+            menu();
             opcion = sc.nextInt();
             sc.nextLine(); //Limpiar el buffer de entrada
             switch (opcion) {
@@ -31,13 +22,13 @@ public class Guarderia {
                     ingresarAnimal(sc);
                     break;
                 case 2:
-                    listarAnimales();
+                    retirarAnimal(sc);
                     break;
                 case 3:
                     calcularTotalAnimales();
                     break;
                 case 4:
-                    retirarAnimal(sc);
+                    listarAnimales();
                     break;
                 case 5:
                     saludoGeneral();
@@ -49,7 +40,20 @@ public class Guarderia {
         } while (opcion != 0);
     }
 
-    private static void ingresarAnimal(Scanner scanner) {
+    public static void menu(){
+        System.out.println(" ");
+        System.out.println("Hola bienvenido al sistema de datos de la Guarderia SunnySide :)");
+        System.out.println("A continuacion ingrese la opcion correspondiente a sus necesidades: ");
+        System.out.println("1. Ingresar a un animal a la guarderia.");
+        System.out.println("2. Retirar animal de la guarderia");
+        System.out.println("3. Calcular cantidad de animales que se encuentran en la guarderia");
+        System.out.println("4. Listar todos los animales con sus datos");
+        System.out.println("5. Hacer saludar a todos los animales de la guarderia");
+        System.out.println("0. Salir del sistema");
+        System.out.println(" ");
+    }
+
+    public static void ingresarAnimal(Scanner scanner) {
         System.out.println("/////////// Ingresar Animal ///////////");
         System.out.println("Tipo de animal: ");
         String tipo = scanner.nextLine();
@@ -77,28 +81,28 @@ public class Guarderia {
             tipoAgua = scanner.nextLine();
         }
         System.out.println("Nombre del dueño: ");
-        String nombreDueño = scanner.nextLine();
+        String nombreDuenio = scanner.nextLine();
         System.out.println("DNI del dueño: ");
-        long dniDueño = scanner.nextLong();
+        long dniDuenio = scanner.nextLong();
         scanner.nextLine(); //Limpia buffer de entrada
         System.out.println("Direccion del dueño: ");
-        String direccionDueño = scanner.nextLine();
+        String direccionDuenio = scanner.nextLine();
         System.out.println(" ");
         System.out.println("Se ha registrado al animal con exito. Gracias por confiar en nosotros :)");
 
         //Creamos el objeto Perro en este caso
 
         if (tipo.equals("Perro") || tipo.equals("perro")) {
-            animal = new Perro(tipo, nombreAnimal, edadAnimal, sexoAnimal, pesoAnimal, razaAnimal, nombreDueño, dniDueño, direccionDueño);
+            animal = new Perro(tipo, nombreAnimal, edadAnimal, sexoAnimal, pesoAnimal, razaAnimal, nombreDuenio, dniDuenio, direccionDuenio);
             animales.add(animal);
         } else if (tipo.equals("Gato") || tipo.equals("gato")) {
-            animal = new Gato(tipo, nombreAnimal, edadAnimal, sexoAnimal, pesoAnimal, nombreDueño, dniDueño, direccionDueño);
+            animal = new Gato(tipo, nombreAnimal, edadAnimal, sexoAnimal, pesoAnimal, nombreDuenio, dniDuenio, direccionDuenio);
             animales.add(animal);
         } else if (tipo.equals("Pez") || tipo.equals("pez")) {
-            animal = new Pez(tipo, nombreAnimal, edadAnimal, sexoAnimal, pesoAnimal, tipoAgua, nombreDueño, dniDueño, direccionDueño);
+            animal = new Pez(tipo, nombreAnimal, edadAnimal, sexoAnimal, pesoAnimal, tipoAgua, nombreDuenio, dniDuenio, direccionDuenio);
             animales.add(animal);
         } else if (tipo.equals("Hamster") || tipo.equals("hamster")) {
-            animal = new Hamster(tipo, nombreAnimal, edadAnimal, sexoAnimal, pesoAnimal, nombreDueño, dniDueño, direccionDueño);
+            animal = new Hamster(tipo, nombreAnimal, edadAnimal, sexoAnimal, pesoAnimal, nombreDuenio, dniDuenio, direccionDuenio);
             animales.add(animal);
         } else {
             System.out.println("No aceptamos ese tipo de animales a nuestra guarderia.");
@@ -107,75 +111,86 @@ public class Guarderia {
 
     }
 
-    private static void listarAnimales() {
+    public static void listarAnimales() {
 
-        System.out.println("///////////// Lista de animales ingresados /////////////");
+        if (animales.isEmpty()){
+            System.out.println("Aun no se encuentran animales registrados");
+        }
+        else {
+            System.out.println("///////////// Lista de animales ingresados /////////////");
 
-        for (int i = 0; i < animales.size(); i++) {
-            int posicion = i;
-            Animal animal = animales.get(posicion);
+            for (int i = 0; i < animales.size(); i++) {
+                Animal animal = animales.get(i);
 
-            System.out.println("Tipo de animal: " + animal.getTipo());
-            System.out.println("Nombre del animal: " + animal.getNombre());
-            System.out.println("Edad del animal: " + animal.getEdad() + " años");
-            System.out.println("Sexo del animal: " + animal.getSexo());
-            System.out.println("Peso del animal: " + animal.getPeso() + " Kg");
-            if (animal.getTipo().equals("Perro") || animal.getTipo().equals("perro")) {
-                System.out.println("Raza del animal: " + animal.getRaza());
+                System.out.println("Tipo de animal: " + animal.getTipo());
+                System.out.println("Nombre del animal: " + animal.getNombre());
+                System.out.println("Edad del animal: " + animal.getEdad() + " años");
+                System.out.println("Sexo del animal: " + animal.getSexo());
+                System.out.println("Peso del animal: " + animal.getPeso() + " Kg");
+                if (animal.getTipo().equals("Perro") || animal.getTipo().equals("perro")) {
+                    System.out.println("Raza del animal: " + animal.getRaza());
+                }
+                if (animal.getTipo().equals("Pez") || animal.getTipo().equals("pez")) {
+                    System.out.println("Tipo de agua: " + animal.getTipoAgua());
+                }
+                System.out.println("Nombre del dueño: " + animal.getNombreDuenio());
+                System.out.println("DNI del dueño: " + animal.getDniDuenio());
+                System.out.println("Direccion del dueño: " + animal.getDireccionDuenio());
+                System.out.println("Posicion en la lista: " + i);
+                System.out.println("////////////////////////////////////////////////////");
+                System.out.println(" ");
             }
-            if (animal.getTipo().equals("Pez") || animal.getTipo().equals("pez")) {
-                System.out.println("Tipo de agua: " + animal.getTipoAgua());
-            }
-            System.out.println("Nombre del dueño: " + animal.nombreDueño);
-            System.out.println("DNI del dueño: " + animal.getDniDueño());
-            System.out.println("Direccion del dueño: " + animal.getDireccionDueño());
-            System.out.println("Posicion en la lista: " + posicion);
-            System.out.println("/////////////////////////////////////////////");
-            System.out.println(" ");
         }
 
     }
 
-    private static int calcularTotalAnimales() {
+    public static void calcularTotalAnimales() {
         int contador = 0;
         for (int i = 0; i < animales.size(); i++) {
             contador++;
         }
         if (contador == 1) {
             System.out.println("En la guarderia hay: " + contador + " animal por el momento");
-            return 1;
         } else if (contador > 1) {
             System.out.println("En la guarderia hay: " + contador + " animales por el momento");
         } else {
             System.out.println("No hay animales en la lista todavia");
-            return 0;
         }
-        return contador;
     }
 
-    private static void retirarAnimal(Scanner scanner) {
+    public static void retirarAnimal(Scanner scanner) {
 
-        System.out.println("Ingrese la posicion del animal que desea retirar: ");
-        int posicion = scanner.nextInt();
+        int posicion;
 
-        for (int i=0; i < animales.size(); i++) {
-            Animal animal = animales.get(i);
-            if (posicion == i){
-                animales.remove(i);
-                System.out.println("Usted ha retirado a: " + animal.getNombre() + ". Gracias, vuelva prontos");
+        if (animales.isEmpty()) {
+            System.out.println("Aun no se encuentran animales registrados");
+        }
+        else {
+            System.out.println("Ingrese la posicion del animal que desea retirar: ");
+            posicion = scanner.nextInt();
+            for (int i = 0; i < animales.size(); i++) {
+                Animal animal = animales.get(i);
+                if (posicion == i) {
+                    animales.remove(i);
+                    System.out.println("Usted ha retirado a: " + animal.getNombre() + ". Gracias, vuelva prontos");
+                } else if (posicion > i) {
+                    System.out.println("Usted ha retirado a todos los animales. Gracias, vuelva prontos");
+                    animales.clear();
+                    System.out.println("Lista vacia:" + animales);
+                }
+
             }
         }
     }
 
-    private static void saludoGeneral(){
+    public static void saludoGeneral(){
 
         if (animales.size() == 0){
             System.out.println("No hay animales en la lista, primero ingrese un animal");
             System.out.println(" ");
         }
         else {
-            for (int i=0; i < animales.size(); i++){
-                Animal animal = animales.get(i);
+            for (Animal animal : animales) {
                 animal.saludar();
             }
         }
