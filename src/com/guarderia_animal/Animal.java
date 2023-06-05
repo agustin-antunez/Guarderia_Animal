@@ -9,22 +9,22 @@ public abstract class Animal {
     protected int edad;
     protected String sexo;
     protected double peso;
-    protected String nombreDueño;
-    protected long dniDueño;
-    protected String direccionDueño;
+    protected String nombreDuenio;
+    protected long dniDuenio;
+    protected String direccionDuenio;
 
 
     //CONSTRUCTOR
 
-    public Animal(String tipo, String nombre, int edad, String sexo, double peso, String nombreDueño, long dniDueño, String direccionDueño){
+    public Animal(String tipo, String nombre, int edad, String sexo, double peso, String nombreDuenio, long dniDuenio, String direccionDuenio){
         this.tipo = tipo;
         this.nombre = nombre;
         this.edad = edad;
         this.sexo = sexo;
         this.peso = peso;
-        this.nombreDueño = nombreDueño;
-        this.dniDueño = dniDueño;
-        this.direccionDueño = direccionDueño;
+        this.nombreDuenio = nombreDuenio;
+        this.dniDuenio = dniDuenio;
+        this.direccionDuenio = direccionDuenio;
     }
 
     //METODOS
@@ -44,11 +44,11 @@ public abstract class Animal {
 
     public abstract String getTipoAgua();
 
-    public String getNombreDueño() {return nombreDueño;}
+    public String getNombreDuenio() {return nombreDuenio;}
 
-    public long getDniDueño() {return dniDueño;}
+    public long getDniDuenio() {return dniDuenio;}
 
-    public String getDireccionDueño() {return direccionDueño;}
+    public String getDireccionDuenio() {return direccionDuenio;}
 
     @Override
     public String toString() {
@@ -58,9 +58,9 @@ public abstract class Animal {
                 ", edad=" + edad +
                 ", sexo='" + sexo + '\'' +
                 ", peso=" + peso +
-                ", nombreDueño='" + nombreDueño + '\'' +
-                ", dniDueño=" + dniDueño +
-                ", direccionDueño='" + direccionDueño + '\'' +
+                ", nombreDuenio='" + nombreDuenio + '\'' +
+                ", dniDuenio=" + dniDuenio +
+                ", direccionDuenio='" + direccionDuenio + '\'' +
                 '}';
     }
 }

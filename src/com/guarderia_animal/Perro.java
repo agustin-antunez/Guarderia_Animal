@@ -38,9 +38,9 @@ public class Perro extends Animal{
                 ", sexo='" + sexo + '\'' +
                 ", peso=" + peso +
                 ", raza='" + raza + '\'' +
-                ", nombreDueño='" + nombreDuenio + '\'' +
-                ", dniDueño=" + dniDuenio +
-                ", direccionDueño='" + direccionDuenio + '\'' +
+                ", nombreDuenio='" + nombreDuenio + '\'' +
+                ", dniDuenio=" + dniDuenio +
+                ", direccionDuenio='" + direccionDuenio + '\'' +
                 '}';
     }
 }
